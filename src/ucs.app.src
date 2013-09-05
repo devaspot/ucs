@@ -1,0 +1,8 @@
+{application,ucs,
+ [{description,"SRC UCS ISO 10646"},
+  {vsn,"0.4.0"},
+  {registered,"usc_sup"},
+  {applications, [kernel, stdlib, sasl]},
+  {mod, {ucs_app, []}},
+  {env, []}
+ ]}.

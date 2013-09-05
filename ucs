@@ -1,0 +1,4 @@
+#!/bin/bash
+
+PIE=$(dirname $0)
+erl -pa ebin -s ucs start
