@@ -383,14 +383,16 @@ insert_aliases(MIBenum,[Alias|AliasList]) ->
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 -ifndef(UNICODE_MAPPING_DIR).
--define(UNICODE_MAPPING_DIR,".").
+-define(UNICODE_MAPPING_DIR,"priv").
 -endif.
 
 mappings(Dir,MappingDir) ->
     %% Build mapping tables ("unicode-CHARSET.dets" from "unicode-CHARSET.txt")
     %% where CHARSET is a character set name, as defined by IANA.
-    {ok,Dirlist}=file:list_dir(MappingDir),
-    mappings2(Dir,MappingDir,scan_dir(Dirlist)).
+    io:format("Dir ~p Maps ~p~n",[Dir,MappingDir]),
+    MD = Dir ++ "/" ++ MappingDir,
+    {ok,Dirlist}=file:list_dir(MD),
+    mappings2(Dir,MD, scan_dir(Dirlist)).
 
 %%% Scans a directory for "unicode-*.txt" files, i.e.files that contains mapping
 %%% tables between Unicode and a character sets.
